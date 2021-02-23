@@ -1,15 +1,3 @@
-<?php
-	$servidor="localhost";
-	$usuario="root";
-	$clave="s7h4a2o6";
-	$baseDeDatos="burnout";
-
-	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
-
-	if (!$enlace){
-		echo "Error en la conexión con el servidor";
-	}
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -100,19 +88,5 @@
 	<br>
 	</div>
 </body>
-
-<?php
-	if(isset($_POST['fecha'])){
-		$fecha= $_POST["fecha"];
-	
-
-	$insertardatos= "INSERT INTO fecha VALUES('$fecha')";
-	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
-		if(!$ejecutarInsertar){
-			echo "Error en la linea de SQL";
-		}
-	}
-?>
-
 </html>
 

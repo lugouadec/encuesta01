@@ -33,5 +33,10 @@
 			<center><h1><input type="submit" name="participar" value="Si, quiero participar!"></h1></center>
 		</form>
 	</section>
+
+	<script>
+		console.log("Holas Mundo");
+		document.write("Holas Mundo !!!");
+	</script>
 </body>
 </html>

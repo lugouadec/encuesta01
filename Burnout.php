@@ -1,14 +1,15 @@
 <?php
-	$servidor="localhost";
+/*	$servidor="localhost";
 	$usuario="root";
-	$clave="s7h4a2o6";
+	$clave="";
 	$baseDeDatos="burnout";
 
 	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
 	if (!$enlace){
 		echo "Error en la conexión con el servidor";
-	}
+	}*/
+	echo "Hola Como";
 ?>
 
 <!DOCTYPE html>
@@ -240,6 +241,7 @@
 												'$O14',
 												'$O15',
 												'$O16')";
+	/*
 	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
 		if(!$ejecutarInsertar){
 			echo "Error en la linea de SQL";
@@ -255,7 +257,7 @@
 	$suma_desen=array_sum($desen);
 	$total_desen= count($desen);
 	$desentendimiento=$suma_desen/$total_desen;
-
+*/
 ?>
 
 </html>

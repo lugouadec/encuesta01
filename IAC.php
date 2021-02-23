@@ -1,6 +1,6 @@
 <?php
 	$servidor="localhost";
-	$usuario="root";
+	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
 
@@ -8,6 +8,18 @@
 
 	if (!$enlace){
 		echo "Error en la conexión con el servidor";
+	}
+
+	
+	if(!empty($_POST['fecha'])){
+	$fecha= $_POST["fecha"];
+	
+
+	$insertardatos= "INSERT INTO consentimiento(folio,fecha) VALUES(null,'$fecha');";
+	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
+		if(!$ejecutarInsertar){
+			echo "Error en la linea de SQL";
+		}
 	}
 ?>
 
