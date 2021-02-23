@@ -1,6 +1,6 @@
 <?php
 	$servidor="localhost";
-	$usuario="root";
+	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
 
@@ -9,6 +9,41 @@
 	if (!$enlace){
 		echo "Error en la conexión con el servidor";
 	}
+
+
+	if(isset($_POST['Stress_completo'])){
+		$E1= $_POST["E1"];
+		$E2= $_POST["E2"];
+		$E3= $_POST["E3"];
+		$E4= $_POST["E4"];
+		$E5= $_POST["E5"];
+		$E6= $_POST["E6"];
+		$E7= $_POST["E7"];
+		$E8= $_POST["E8"];
+		$E9= $_POST["E9"];
+		
+
+	$insertardatos= "INSERT INTO GWEstres VALUES('$E1',
+												'$E2',
+												'$E3',
+												'$E4',
+												'$E5',
+												'$E6',
+												'$E7',
+												'$E8',
+												'$E9')";
+	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
+		if(!$ejecutarInsertar){
+			echo "Error en la linea de SQL";
+		}
+	}
+
+	$estres=[$E1,$E2,$E3,$E4,$E5,$E6,$E7,$E8,$E9];
+	$suma_estres=array_sum($estres);
+	$total_estres= count($estres);
+	$Final_estres=$suma_estres/$total_estres;
+
+	mysqli_close($enlace);
 ?>
 
 <!DOCTYPE html>
@@ -343,74 +378,4 @@
 </form>
 </section></center>
 </body>
-
-<?php
-	if(isset($_POST['MiniMarkerCompleto'])){
-		$P1= $_POST["P1"];
-		$P2= $_POST["P2"];
-		$P3= $_POST["P3"];
-		$P4= $_POST["P4"];
-		$P5= $_POST["P5"];
-		$P6= $_POST["P6"];
-		$P7= $_POST["P7"];
-		$P8= $_POST["P8"];
-		$P9= $_POST["P9"];
-		$P10= $_POST["P10"];
-		$P11= $_POST["P11"];
-		$P12= $_POST["P12"];
-		$P13= $_POST["P13"];
-		$P14= $_POST["P14"];
-		$P15= $_POST["P15"];
-		$P16= $_POST["P16"];
-		$P17= $_POST["P17"];
-		$P18= $_POST["P18"];
-		$P19= $_POST["P19"];
-		$P20= $_POST["P20"];
-		$P21= $_POST["P21"];
-		$P22= $_POST["P22"];
-		$P23= $_POST["P23"];
-		$P24= $_POST["P24"];
-	
-
-	$insertardatos= "INSERT INTO Personalidad VALUES('$P1',
-													'$P2',
-													'$P3',
-													'$P4',
-													'$P5',
-													'$P6',
-													'$P7',
-													'$P8',
-													'$P9',
-													'$P10',
-													'$P11',
-													'$P12',
-													'$P13',
-													'$P14',
-													'$P15',
-													'$P16',
-													'$P17',
-													'$P18',
-													'$P19',
-													'$P20',
-													'$P21',
-													'$P22',
-													'$P23',
-													'$P24')";
-	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
-		if(!$ejecutarInsertar){
-			echo "Error en la linea de SQL";
-		}
-	}
-
-	$neurotico=[$P1,$P3,$P9,$P11,$P18,$P19,$P21,$P23];
-	$pneurotico=array_sum($neurotico);
-
-	$extroversion=[$P2,$P8,$P10,$P13,$P14,$P16,$P20,$P24];
-	$pextrovertido=array_sum($extroversion);
-
-	$teson=[$P4,$P5,$P6,$P7,$P12,$P15,$P17,$P22]; 
-	$pteson=array_sum($teson);
-
-?>
-
 </html>

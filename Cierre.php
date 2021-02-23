@@ -1,6 +1,6 @@
 <?php
 	$servidor="localhost";
-	$usuario="root";
+	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
 
@@ -9,6 +9,54 @@
 	if (!$enlace){
 		echo "Error en la conexión con el servidor";
 	}
+
+if(!empty($_POST['Perfil_completo'])){
+		$G6= $_POST["G6"];
+		$G7= $_POST["G7"];
+		$G8= $_POST["G8"];
+		$G9= $_POST["G9"];
+		$G10= $_POST["G10"];
+		$EPL14_1= $_POST["EPL14_1"];
+		$EPL14_2= $_POST["EPL14_2"];
+		$EPL13= $_POST["EPL13"];
+		$G4= $_POST["G4"];
+		$G5= $_POST["G5"];
+		$EPL15= $_POST["EPL15"];
+		$G1= $_POST["G1"];
+		$G2= $_POST["G2"];
+		$G3= $_POST["G3"];
+		$G11= $_POST["G11"];
+		$G12= $_POST["G12"];
+		$G13= $_POST["G13"];
+
+
+$insertardatos= "INSERT INTO confusoras VALUES('$G6',
+											'$G7',
+											'$G8',
+											'$G9',
+											'$G10',
+											'$EPL14_1',
+											'$EPL14_2',
+											'$EPL13',
+											'$G4',
+											'$G5',
+											'$EPL15',
+											'$G1',
+											'$G2',
+											'$G3',
+											'$G11',
+											'$G12',
+											'$G13')";
+
+											echo $insertardatos;
+$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
+	
+if(!$ejecutarInsertar){
+		echo "Error en la linea de SQL";
+	}
+}
+mysqli_close($enlace);
+
 ?>
 
 

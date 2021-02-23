@@ -1,15 +1,83 @@
 <?php
-/*	$servidor="localhost";
-	$usuario="root";
-	$clave="";
+	$servidor="localhost";
+	$usuario="burnout";
+	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
 
 	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
 	if (!$enlace){
 		echo "Error en la conexión con el servidor";
-	}*/
-	echo "Hola Como";
+	}
+	
+
+	if(!empty($_POST['MiniMarkerCompleto'])){
+		$P1= $_POST["P1"];
+		$P2= $_POST["P2"];
+		$P3= $_POST["P3"];
+		$P4= $_POST["P4"];
+		$P5= $_POST["P5"];
+		$P6= $_POST["P6"];
+		$P7= $_POST["P7"];
+		$P8= $_POST["P8"];
+		$P9= $_POST["P9"];
+		$P10= $_POST["P10"];
+		$P11= $_POST["P11"];
+		$P12= $_POST["P12"];
+		$P13= $_POST["P13"];
+		$P14= $_POST["P14"];
+		$P15= $_POST["P15"];
+		$P16= $_POST["P16"];
+		$P17= $_POST["P17"];
+		$P18= $_POST["P18"];
+		$P19= $_POST["P19"];
+		$P20= $_POST["P20"];
+		$P21= $_POST["P21"];
+		$P22= $_POST["P22"];
+		$P23= $_POST["P23"];
+		$P24= $_POST["P24"];
+	
+
+	$insertardatos= "INSERT INTO Personalidad VALUES('$P1',
+													'$P2',
+													'$P3',
+													'$P4',
+													'$P5',
+													'$P6',
+													'$P7',
+													'$P8',
+													'$P9',
+													'$P10',
+													'$P11',
+													'$P12',
+													'$P13',
+													'$P14',
+													'$P15',
+													'$P16',
+													'$P17',
+													'$P18',
+													'$P19',
+													'$P20',
+													'$P21',
+													'$P22',
+													'$P23',
+													'$P24')";
+	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
+		if(!$ejecutarInsertar){
+			echo "Error en la linea de SQL";
+		}
+	}
+
+	$neurotico=[$P1,$P3,$P9,$P11,$P18,$P19,$P21,$P23];
+	$pneurotico=array_sum($neurotico);
+
+	$extroversion=[$P2,$P8,$P10,$P13,$P14,$P16,$P20,$P24];
+	$pextrovertido=array_sum($extroversion);
+
+	$teson=[$P4,$P5,$P6,$P7,$P12,$P15,$P17,$P22]; 
+	$pteson=array_sum($teson);
+
+	mysqli_close($enlace);
 ?>
 
 <!DOCTYPE html>
@@ -140,11 +208,11 @@
 				</tr>
 				<tr>
 					<td><label for="O10">...has tenido más opiniones negativas que positivas sobre tu trabajo del hospital o clínica?</label></td>
-					<td><center><input type="radio" name="O1O" value="0" required><label>0</label></center></td>
-					<td><center><input type="radio" name="O1O" value="25"><label>1</label></center></td>
-					<td><center><input type="radio" name="O1O" value="50"><label>2</label></center></td>
-					<td><center><input type="radio" name="O1O" value="75"><label>3</label></center></td>
-					<td><center><input type="radio" name="O1O" value="100"><label>4</label></center></td>
+					<td><center><input type="radio" name="O10" value="0" required><label>0</label></center></td>
+					<td><center><input type="radio" name="O10" value="25"><label>1</label></center></td>
+					<td><center><input type="radio" name="O10" value="50"><label>2</label></center></td>
+					<td><center><input type="radio" name="O10" value="75"><label>3</label></center></td>
+					<td><center><input type="radio" name="O10" value="100"><label>4</label></center></td>
 				</tr>
 				<tr>
 					<td><label for="O11">...has hecho más por inercia tu trabajo en el hospital o clínica?</label></td>
@@ -204,60 +272,4 @@
 	</form>
 	</section>
 </body>
-
-<?php
-	if(isset($_POST['BurnoutCompleto'])){
-						$O1= $_POST["O1"];
-						$O2= $_POST["O2"];
-						$O3= $_POST["O3"];
-						$O4= $_POST["O4"];
-						$O5= $_POST["O5"];
-						$O6= $_POST["O6"];
-						$O7= $_POST["O7"];
-						$O8= $_POST["O8"];
-						$O9= $_POST["O9"];
-						$O10= $_POST["O10"];
-						$O11= $_POST["O11"];
-						$O12= $_POST["O12"];
-						$O13= $_POST["O13"];
-						$O14= $_POST["O14"];
-						$O15= $_POST["O15"];
-						$O16= $_POST["O16"];
-	
-
-	$insertardatos= "INSERT INTO burnout VALUES('$O1',
-												'$O2',
-												'$O3',
-												'$O4',
-												'$O5',
-												'$O6',
-												'$O7',
-												'$O8',
-												'$O9',
-												'$O10',
-												'$O11',
-												'$O12',
-												'$O13',
-												'$O14',
-												'$O15',
-												'$O16')";
-	/*
-	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
-		if(!$ejecutarInsertar){
-			echo "Error en la linea de SQL";
-		}
-	}
-
-	$agotamiento=[$O1,$O2,$O3,$O4,$O5,$O6,$O7,$O8];
-	$suma_agot=array_sum($agotamiento);
-	$total_agot= count($agotamiento);
-	$Final_agot=$suma_agot/$total_agot;
-
-	$desen=[$O9,$O10,$O10,$O11,$O12,$O13,$O14,$O15,$O16];
-	$suma_desen=array_sum($desen);
-	$total_desen= count($desen);
-	$desentendimiento=$suma_desen/$total_desen;
-*/
-?>
-
 </html>

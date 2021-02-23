@@ -21,6 +21,8 @@
 			echo "Error en la linea de SQL";
 		}
 	}
+
+	mysqli_close($enlace);
 ?>
 
 <!DOCTYPE html>
@@ -275,83 +277,9 @@
 			</table>
 			<br>
 			<br>			
-			<center><input type="submit" name="IAC_completo" value="Completo"></center>
-			<br>
-			<br>
-			<button id="" value="Siguiente">Siguiente</button>
-		</form>
+			<center><input type="submit" name="IAC_completo" value="Siguiente -->"></center>
+			</form>
 	</section></center>
 
 </body>
-
-<?php
-	if(isset($_POST['IAC_completo'])){
-		$C1= $_POST["C1"];
-		$C2= $_POST["C2"];
-		$C3= $_POST["C3"];
-		$C4= $_POST["C4"];
-		$C5= $_POST["C5"];
-		$C6= $_POST["C6"];
-		$C7= $_POST["C7"];
-		$C8= $_POST["C8"];
-		$C9= $_POST["C9"];
-		$C10= $_POST["C10"];
-		$C11= $_POST["C11"];
-		$C12= $_POST["C12"];
-		$C13= $_POST["C13"];
-		$C14= $_POST["C14"];
-		$C15= $_POST["C15"];
-		$C16= $_POST["C16"];
-		$C17= $_POST["C17"];
-		$C18= $_POST["C18"];
-		$C19= $_POST["C19"];
-
-	
-
-	$insertardatos= "INSERT INTO IAC VALUES('$C1',
-											'$C2',
-											'$C3',
-											'$C4',
-											'$C5',
-											'$C6',
-											'$C7',
-											'$C8',
-											'$C9',
-											'$C10',
-											'$C11',
-											'$C12',
-											'$C13',
-											'$C14',
-											'$C15',
-											'$C16',
-											'$C17',
-											'$C18',
-											'$C19')";
-	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
-		if(!$ejecutarInsertar){
-			echo "Error en la linea de SQL";
-		}
-	}
-
-	$individual=[$C1,$C2,$C3,$C4,$C5,$C6];
-	$suma_IACind=array_sum($individual);
-	$total_ind= count($individual);
-	$IAC_Ind=$suma_IACind/$total_ind;
-
-
-	$trabajo=[$C7,$C8,$C9,$C10,$C11,$C12,$C13];
-	$suma_IACtra=array_sum($trabajo);
-	$total_tra= count($trabajo);
-	$IAC_tra=$suma_IACtra/$total_tra;
-
-
-	$atencion=[$C14,$C15,$C16,$C17,$C18,$C19];
-	$suma_IACaten=array_sum($atencion);
-	$total_aten= count($atencion);
-	$IAC_aten=$suma_IACaten/$total_aten;
-
-
-
-?>
-
 </html>

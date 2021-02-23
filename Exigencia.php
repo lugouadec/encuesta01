@@ -1,6 +1,6 @@
 <?php
 	$servidor="localhost";
-	$usuario="root";
+	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
 
@@ -9,6 +9,61 @@
 	if (!$enlace){
 		echo "Error en la conexión con el servidor";
 	}
+
+	if(!empty($_POST['BurnoutCompleto'])){
+						$O1= $_POST["O1"];
+						$O2= $_POST["O2"];
+						$O3= $_POST["O3"];
+						$O4= $_POST["O4"];
+						$O5= $_POST["O5"];
+						$O6= $_POST["O6"];
+						$O7= $_POST["O7"];
+						$O8= $_POST["O8"];
+						$O9= $_POST["O9"];
+						$O10= $_POST["O10"];
+						$O11= $_POST["O11"];
+						$O12= $_POST["O12"];
+						$O13= $_POST["O13"];
+						$O14= $_POST["O14"];
+						$O15= $_POST["O15"];
+						$O16= $_POST["O16"];
+	
+
+	$insertardatos= "INSERT INTO burnout VALUES('$O1',
+												'$O2',
+												'$O3',
+												'$O4',
+												'$O5',
+												'$O6',
+												'$O7',
+												'$O8',
+												'$O9',
+												'$O10',
+												'$O11',
+												'$O12',
+												'$O13',
+												'$O14',
+												'$O15',
+												'$O16')";
+	
+	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
+		if(!$ejecutarInsertar){
+			echo "Error en la linea de SQL";
+		}
+	}
+
+	$agotamiento=[$O1,$O2,$O3,$O4,$O5,$O6,$O7,$O8];
+	$suma_agot=array_sum($agotamiento);
+	$total_agot= count($agotamiento);
+	$Final_agot=$suma_agot/$total_agot;
+
+	$desen=[$O9,$O10,$O10,$O11,$O12,$O13,$O14,$O15,$O16];
+	$suma_desen=array_sum($desen);
+	$total_desen= count($desen);
+	$desentendimiento=$suma_desen/$total_desen;
+
+	mysqli_close($enlace);
+
 ?>
 
 <!DOCTYPE html>
@@ -174,45 +229,4 @@
 	</section></center>
 
 </body>
-
-<?php
-	if(isset($_POST['EPLCompleto'])){
-					$EPL1= $_POST["EPL1"];
-					$EPL2= $_POST["EPL2"];
-					$EPL3= $_POST["EPL3"];
-					$EPL4= $_POST["EPL4"];
-					$EPL5= $_POST["EPL5"];
-					$EPL6= $_POST["EPL6"];
-					$EPL7= $_POST["EPL7"];
-					$EPL8= $_POST["EPL8"];
-					$EPL9= $_POST["EPL9"];
-					$EPL10= $_POST["EPL10"];
-					$EPL11= $_POST["EPL11"];
-					$EPL12= $_POST["EPL12"];
-
-
-	$insertardatos= "INSERT INTO exigencia VALUES('$EPL1',
-												'$EPL2',
-												'$EPL3',
-												'$EPL4',
-												'$EPL5',
-												'$EPL6',
-												'$EPL7',
-												'$EPL8',
-												'$EPL9',
-												'$EPL10',
-												'$EPL11',
-												'$EPL12')";
-	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
-		if(!$ejecutarInsertar){
-			echo "Error en la linea de SQL";
-		}
-	}
-
-	$exigencia=[$EPL1,$EPL2,$EPL3,$EPL4,$EPL5,$EPL6,$EPL7,$EPL8,$EPL9,$EPL10,$EPL11,$EPL12];
-	$suma_exigencia=array_sum($exigencia);
-	$total_exigencia= count($exigencia);
-	$Final_exigencia=$suma_exigencia/$total_exigencia;
-?>
-
 </html>
