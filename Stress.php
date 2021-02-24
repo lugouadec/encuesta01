@@ -1,11 +1,16 @@
 <?php
+	session_start();
+
 	$servidor="localhost";
 	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
 
-	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
+	
+	$folio = $_SESSION['folio'];
+	echo $folio."<br />";
 
+	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 	if (!$enlace){
 		echo "Error en la conexión con el servidor";
 	}
@@ -52,9 +57,10 @@
 											'$C16',
 											'$C17',
 											'$C18',
-											'$C19')";
+											'$C19',
+											$folio)";
 	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
-	echo $ejecutarInsertar;
+	
 		if(!$ejecutarInsertar){
 			echo "Error en la linea de SQL";
 		}
@@ -78,6 +84,8 @@
 	$IAC_aten=$suma_IACaten/$total_aten;
 
 	mysqli_close($enlace);
+	
+	//echo "El contenido es ".$_SESSION['folio'] . "<br/>";
 
 ?>
 

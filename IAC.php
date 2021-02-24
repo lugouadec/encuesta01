@@ -1,11 +1,14 @@
+<!DOCTYPE html>
+<html>
 <?php
+	session_start();
+
 	$servidor="localhost";
 	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
 
 	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
-
 	if (!$enlace){
 		echo "Error en la conexión con el servidor";
 	}
@@ -13,20 +16,40 @@
 	
 	if(!empty($_POST['fecha'])){
 	$fecha= $_POST["fecha"];
-	
+	// echo $fecha;
+
 
 	$insertardatos= "INSERT INTO consentimiento(folio,fecha) VALUES(null,'$fecha');";
 	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
-		if(!$ejecutarInsertar){
-			echo "Error en la linea de SQL";
+	if(!$ejecutarInsertar){
+		echo "Error en la linea de SQL";
+	}
+
+	// $sql = "SELECT * FROM consentimiento;";
+	$sql = "SELECT folio,fecha FROM consentimiento ORDER by folio DESC limit 1;";
+
+	$resultado = mysqli_query($enlace,$sql);
+	if (!$resultado) {
+		// ¡Oh, no! La consulta falló. 
+		echo "Lo sentimos, este sitio web está experimentando problemas.";
+	}
+	else{
+		mysqli_data_seek ($resultado, 0);
+		$extraido= mysqli_fetch_array($resultado);
+		echo "- Folio: ".$extraido['folio']."<br/>";
+		echo "- Fecha: ".$extraido['fecha']."<br/>";
+		if(!empty($extraido['folio'])){
+			$_SESSION['folio']=$extraido['folio'];
 		}
 	}
 
-	mysqli_close($enlace);
-?>
+	//echo session_id() . "<br/>";
+	// $_SESSION['folio']="Holas Cmo estas";
+	// echo $_SESSION['folio'] . "<br/>";
 
-<!DOCTYPE html>
-<html>
+	mysqli_close($enlace);
+	}
+?>
 <head>
 	<title>IAC</title>
 	<meta charset="utf-8">
@@ -277,9 +300,8 @@
 			</table>
 			<br>
 			<br>			
-			<center><input type="submit" name="IAC_completo" value="Siguiente -->"></center>
+			<center><input type="submit" name="IAC_completo" value="Siguiente"></center> -->
 			</form>
 	</section></center>
-
 </body>
 </html>

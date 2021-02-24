@@ -1,8 +1,13 @@
 <?php
+	session_start();
+
 	$servidor="localhost";
 	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
+
+	$folio = $_SESSION['folio'];
+	echo $folio."<br />";
 
 	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
@@ -44,7 +49,8 @@
 												'$O13',
 												'$O14',
 												'$O15',
-												'$O16')";
+												'$O16',
+												$folio)";
 	
 	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
 		if(!$ejecutarInsertar){

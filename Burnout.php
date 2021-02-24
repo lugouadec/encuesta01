@@ -1,8 +1,13 @@
 <?php
+	session_start();
+
 	$servidor="localhost";
 	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
+
+	$folio = $_SESSION['folio'];
+	echo $folio."<br />";
 
 	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
@@ -61,7 +66,8 @@
 													'$P21',
 													'$P22',
 													'$P23',
-													'$P24')";
+													'$P24',
+													$folio)";
 	$ejecutarInsertar = mysqli_query($enlace,$insertardatos);
 		if(!$ejecutarInsertar){
 			echo "Error en la linea de SQL";

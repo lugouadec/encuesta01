@@ -1,8 +1,13 @@
 <?php
+	session_start();
+
 	$servidor="localhost";
 	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
+
+	$folio = $_SESSION['folio'];
+	echo $folio."<br />";
 
 	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
@@ -37,7 +42,8 @@ $insertardatos= "INSERT INTO exigencia VALUES('$EPL1',
 											'$EPL9',
 											'$EPL10',
 											'$EPL11',
-											'$EPL12')";
+											'$EPL12',
+											$folio)";
 $ejecutarInsertar = mysqli_query($enlace,$insertardatos);
 	if(!$ejecutarInsertar){
 		echo "Error en la linea de SQL";

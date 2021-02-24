@@ -1,8 +1,13 @@
 <?php
+	session_start();
+
 	$servidor="localhost";
 	$usuario="burnout";
 	$clave="s7h4a2o6";
 	$baseDeDatos="burnout";
+
+	$folio = $_SESSION['folio'];
+	echo $folio."<br />";
 
 	$enlace = mysqli_connect($servidor, $usuario, $clave, $baseDeDatos);
 
@@ -46,7 +51,8 @@ $insertardatos= "INSERT INTO confusoras VALUES('$G6',
 											'$G3',
 											'$G11',
 											'$G12',
-											'$G13')";
+											'$G13',
+											$folio)";
 
 											echo $insertardatos;
 $ejecutarInsertar = mysqli_query($enlace,$insertardatos);
