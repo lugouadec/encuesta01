@@ -1,6 +1,5 @@
 BD.sql
 Burnout.php
-burnout.sql
 Cierre.php
 confusoras.php
 Consentimiento.php
@@ -9,9 +8,11 @@ IAC.php
 index.php
 Index.php
 Personalidad.php
-pruba3.txt
 prueba2.txt
 prueba.txt
 Prueba.txt
+Hola 
+Como 
+Estas
 README.md
 Stress.php
